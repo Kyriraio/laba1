@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="styles/projects.css">
+    <script src="scripts/projects.js"></script>
+</head>
+<body>
+<div class="wrapper">
+    <button class="add-button">Добавить</button>
+    <table id="table">
+        <thead>
+        <tr>
+            <th>Название работы</th>
+            <th>Описание</th>
+            <th>Дата создания</th>
+            <th>Превью</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Природа</td>
+            <td>Красивый вид озера в заповеднике</td>
+            <td>01.01.2024</td>
+            <td class="image-cell">
+                <div class="image-wrapper">
+                <img class="image" src="assets/nature.jpg" alt="Озеро">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Медведь</td>
+            <td>Завораживающее фото вышедшего из спячки медведя</td>
+            <td>01.02.2024</td>
+            <td class="image-cell">
+                <div class="image-wrapper">
+                <img class="image" src="assets/bear.jpg" alt="Медведь">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Лебедь</td>
+            <td>Завораживающее фото великолепного лебедя</td>
+            <td>01.02.2024</td>
+            <td class="image-cell">
+                <div class="image-wrapper">
+                <img class="image" src="assets/bird.jpg" alt="Лебедь">
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div id="myModal" class="modal">
+    <div class="modal-content">
+      <h2 class="modal-header">Add Row</h2>
+      <form id="form">
+        <div class="form-group">
+          <label for="name">Название*</label>
+          <input class="text-input" type="text" id="name" required>
+        </div>
+        <div class="form-group">
+          <label for="description">Описание*</label>
+          <input class="text-input" type="text" id="description" required>
+        </div>
+        <div class="form-group">
+          <label for="date">Дата*</label>
+          <input class="text-input" type="text" id="date" required>
+        </div>
+        <div class="form-group">
+          <label for="preview">Превью*</label>
+          <input class="file-input" type="file" id="preview" required>
+        </div>
+        <button  class="btn-submit">Добавить</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
