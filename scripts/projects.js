@@ -3,7 +3,8 @@ let body = null;
 let form = null;
 let button = null;
 let button_submit = null;
-
+let file = null;
+let file_input = null;
 document.addEventListener('click', (e) => {
   const modalContent = document.querySelector('.modal-content')
   if (!modalContent.contains(e.target)  && e.target !== button ) {
@@ -16,7 +17,11 @@ document.addEventListener('DOMContentLoaded', () => {
      button_submit = document.querySelector('.btn-submit');
      form = document.getElementById("form");
      body = document.getElementsByTagName('body')[0];
-    button.addEventListener('click', ()=>{
+     file_input = document.getElementById("preview");
+     file_input.addEventListener('change', (e) => {
+      handleFileSelect(e);
+     })
+     button.addEventListener('click', ()=>{
         openModal();
     })
     button_submit.addEventListener('click', (e) => {
@@ -24,7 +29,14 @@ document.addEventListener('DOMContentLoaded', () => {
         addRow();
     })
 })
-
+function handleFileSelect(event) {
+      const selectedFile = event.target.files[0];
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        file = event.target.result;
+      };
+      reader.readAsDataURL(selectedFile);
+ }
 function openModal() {
    modal.classList.add("blur");
    modal.style.display = "block";
@@ -59,7 +71,7 @@ function addRow() {
    cell4.classList.add('image-cell');
    cell4.innerHTML = `
     <div class="image-wrapper">
-       <img class="image" src="${preview}" alt="${name}">
+       <img class="image" src="${file}" alt="${name}">
     </div>`
    closeModal();
 }
