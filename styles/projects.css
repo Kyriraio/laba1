@@ -44,9 +44,6 @@ td {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-/* tr th:not(:last-child), td:not(:last-child) {
-    border-right: none;
-} */
 tr th:not(:first-child), td:not(:first-child) {
     border-left: none;
 }
