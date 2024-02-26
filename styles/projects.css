@@ -1,5 +1,4 @@
 body {
-    position: absolute;
     background-color: black;
     width: 100%;
     height: 100%;
@@ -7,11 +6,11 @@ body {
     font-size: 16px;
 }
 .wrapper {
-    position: absolute;
     width: calc(100% - 30px);
-    height: calc(100% - 30px);
+    height: calc(100% - 90px);
     padding: 15px;
     overflow: auto;
+    margin-top: 60px;
 }
 .table-wrapper {
     position: relative;
@@ -74,6 +73,7 @@ th {
     position: absolute;
     width: 100%;
     height: 100%;
+    cursor: pointer;
 }
 .add-button {
     background-color: yellow;
@@ -166,4 +166,73 @@ th {
     .modal-content {
         width: 300px;
     }
+}
+
+footer {
+    height:50px;
+    background-color: yellow;
+    color:black;
+    text-align: center;
+    padding: 10px 0;
+}
+header {
+    top: 0;
+    z-index: 5;
+    position: fixed;
+    width: 100%;
+    height:30px;
+    background-color: yellow;
+    color: black;
+    padding: 10px 20px;
+}
+.logo {
+    font-size: 24px;
+}
+
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.menu ul li:last-child {
+    margin-right: 0;
+}
+
+.menu ul li a {
+    color: black;
+    text-decoration: none;
+}
+
+.burger-menu {
+    display: none;
+}
+
+/* Стили для мобильного экрана */
+@media only screen and (max-width: 768px) {
+    .menu ul {
+        display: none;
+    }
+
+    .burger-menu {
+        display: block;
+    }
+
+    .burger-menu div {
+        width: 25px;
+        height: 3px;
+        background-color: black;
+        margin: 5px;
+    }
+}
+nav {
+    width: calc(100% - 40px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

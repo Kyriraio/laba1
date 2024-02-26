@@ -5,6 +5,22 @@
     <script src="scripts/projects.js"></script>
 </head>
 <body>
+<header>
+    <nav>
+        <div class="logo">Логотип</div>
+        <div class="menu">
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="projects.html">Проекты</a></li>
+            </ul>
+        </div>
+        <div class="burger-menu">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </nav>
+</header>
 <div class="wrapper">
     <button class="add-button">Добавить</button>
     <div class="table-wrapper">
@@ -23,9 +39,11 @@
                 <td>Красивый вид озера в заповеднике</td>
                 <td>01.01.2024</td>
                 <td class="image-cell">
-                    <div class="image-wrapper">
-                        <img class="image" src="assets/nature.jpg" alt="Озеро">
-                    </div>
+                    <a href="project.html">
+                        <div class="image-wrapper">
+                            <img class="image" src="assets/nature.jpg" alt="Озеро">
+                        </div>
+                    </a>
                 </td>
             </tr>
             <tr>
@@ -33,9 +51,11 @@
                 <td>Завораживающее фото вышедшего из спячки медведя</td>
                 <td>01.02.2024</td>
                 <td class="image-cell">
-                    <div class="image-wrapper">
-                        <img class="image" src="assets/bear.jpg" alt="Медведь">
-                    </div>
+                    <a href="project.html">
+                        <div class="image-wrapper">
+                            <img class="image" src="assets/bear.jpg" alt="Медведь">
+                        </div>
+                    </a>
                 </td>
             </tr>
             <tr>
@@ -43,15 +63,20 @@
                 <td>Завораживающее фото великолепного лебедя</td>
                 <td>01.02.2024</td>
                 <td class="image-cell">
-                    <div class="image-wrapper">
-                        <img class="image" src="assets/bird.jpg" alt="Лебедь">
-                    </div>
+                    <a href="project.html">
+                        <div class="image-wrapper">
+                                <img class="image" src="assets/bird.jpg" alt="Лебедь">
+                        </div>
+                    </a>
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
 </div>
+<footer>
+    <p>Авторские права © 2024 Портфолио фотографа</p>
+</footer>
 <div id="myModal" class="modal">
     <div class="modal-content">
         <h2 class="modal-header">Add Row</h2>
