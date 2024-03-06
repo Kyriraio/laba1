@@ -15,7 +15,7 @@ body {
 .table-wrapper {
     position: relative;
     width: 100%;
-    height: calc(100vh - 90px);
+    height:100%;
     overflow: auto;
 }
 table {
@@ -42,6 +42,9 @@ td {
     max-height: 100px;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+tr{
+    height: 100px;
 }
 tr th:not(:first-child), td:not(:first-child) {
     border-left: none;
@@ -75,13 +78,36 @@ th {
     height: 100%;
     cursor: pointer;
 }
-.add-button {
+.add-button{
     background-color: yellow;
     color: black;
     width: 150px;
     height: 40px;
     border-radius: 10px;
     margin-bottom: 10px;
+    cursor: pointer;
+}
+#find-wrapper input{
+  background: yellow;
+}
+
+#sort-wrapper input{
+  background: yellow;
+}
+#sort-wrapper label {
+    color:yellow;
+}
+select{
+    background: yellow;
+}
+
+#find-button, #sort-button{
+    background-color: yellow;
+    color: black;
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    margin-bottom: 0;
     cursor: pointer;
 }
 .modal {
@@ -110,7 +136,7 @@ th {
  .modal-header {
     margin-top: 0;
  }
- #form {
+ #formAdd {
     width: 100%;
  }
 .form-group {
@@ -126,6 +152,19 @@ th {
 
 .form-group .text-input {
     width: -webkit-fill-available;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+#find-wrapper,#sort-wrapper {
+    display:inline-block;
+    border: 1px solid yellow;
+    border-radius: 10px;
+    padding: 5px;
+}
+#find-input {
+
+    width: 90px;
     padding: 8px;
     border: 1px solid #ddd;
     border-radius: 6px;
@@ -235,4 +274,16 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.action-button-wrapper{
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+}
+.action-item{
+    color:black;
+    background-color:yellow;
+    border:none;
+    cursor: pointer;
 }

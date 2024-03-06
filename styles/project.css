@@ -98,3 +98,16 @@ nav {
     align-items: center;
     justify-content: space-between;
 }
+.reviews-wrapper{
+    color:yellow;
+    border: 2px solid yellow;
+}
+.review{
+    border: 2px solid yellow;
+}
+.review-input{
+    background: black;
+    color:yellow;
+    position: relative;
+    max-width: calc(100% - 30px);
+}

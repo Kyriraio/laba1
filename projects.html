@@ -24,6 +24,31 @@
 </header>
 <div class="wrapper">
     <button class="add-button">Добавить</button>
+    <div id="find-wrapper">
+        <button id="find-button">Найти</button>
+        <input id="find-input" placeholder="Название">
+    </div>
+    <div id="sort-wrapper">
+        <button id="sort-button">Сортировать</button>
+        <label for="sort-mode">Режим</label>
+        <select id="sort-mode">
+            <option value="date_create">Время создания</option>
+            <option value="date_update">Время обновления</option>
+            <option value="name">Название</option>
+        </select>
+        <label for="sort-direction">Направление</label>
+        <select id="sort-direction">
+            <option value="asc">По возрастанию</option>
+            <option value="desc">По убыванию</option>
+        </select>
+
+        <label for="startDateTime">С:</label>
+        <input type="datetime-local" id="startDateTime" name="startDateTime">
+
+        <label for="endDateTime">По:</label>
+        <input type="datetime-local" id="endDateTime" name="endDateTime">
+    </div>
+
     <div class="table-wrapper">
         <table id="table">
             <thead>
@@ -32,9 +57,11 @@
                 <th>Описание</th>
                 <th>Дата создания</th>
                 <th>Превью</th>
+                <th>O</th>
+                <th>X</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody id="projects-list">
             <tr>
                 <td>Природа</td>
                 <td>Красивый вид озера в заповеднике</td>
@@ -78,10 +105,10 @@
 <footer>
     <p>Авторские права © 2024 Портфолио фотографа</p>
 </footer>
-<div id="myModal" class="modal">
+<div id="addModal" class="modal">
     <div class="modal-content">
-        <h2 class="modal-header">Add Row</h2>
-        <form id="form">
+        <h2 class="modal-header">Добавить элемент</h2>
+        <form id="formAdd">
             <div class="form-group">
                 <label for="name">Название*</label>
                 <input class="text-input" type="text" id="name" required>
@@ -98,7 +125,40 @@
                 <label for="preview">Превью*</label>
                 <input class="file-input" type="file" id="preview" required>
             </div>
-            <button  class="btn-submit">Добавить</button>
+            <button  id ="btn-submit-add" class="btn-submit">Добавить</button>
+        </form>
+    </div>
+</div>
+
+<div id="updateModal" class="modal">
+    <div class="modal-content">
+        <h2 class="modal-header">Изменить элемент</h2>
+        <form id="formUpdate">
+            <div class="form-group">
+                <label for="name">Название</label>
+                <input class="text-input" type="text" id="nameChange" >
+            </div>
+            <div class="form-group">
+                <label for="description">Описание</label>
+                <input class="text-input" type="text" id="descriptionChange" >
+            </div>
+            <div class="form-group">
+                <label for="date">Дата</label>
+                <input class="text-input" type="text" id="dateChange" >
+            </div>
+            <div class="form-group">
+                <label for="preview">Превью</label>
+                <input class="file-input" type="file" id="previewChange" >
+            </div>
+            <button  id ="btn-submit-update"  class="btn-submit">Сохранить изменения</button>
+        </form>
+    </div>
+</div>
+<div id="deleteModal" class="modal">
+    <div class="modal-content">
+        <h2 class="modal-header">Удалить элемент</h2>
+        <form id="formDelete">
+            <button  id ="btn-submit-delete"  class="btn-submit">Удалить</button>
         </form>
     </div>
 </div>
