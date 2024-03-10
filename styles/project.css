@@ -5,6 +5,102 @@ body {
     margin: 0;
     font-size: 16px;
 }
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 50;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    background-color: gray;
+    border: 1px solid #888;
+    width: 400px;
+    padding: 15px;
+}
+
+ .modal-header {
+    margin-top: 0;
+ }
+ #formAdd {
+    width: 100%;
+ }
+.form-group {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group .text-input {
+    width: -webkit-fill-available;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+.btn-submit {
+    background-color: darkblue;
+    color: white;
+    width: 120px;
+    height: 40px;
+    border-radius: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.blur {
+    backdrop-filter: blur(6px);
+}
+@media screen and (max-width: 600px) {
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+  
+    th, td {
+        white-space: normal;
+        padding: 5px;
+    }
+    .image-cell {
+        width: 100px;
+        height: 80px;
+    }
+    .modal-content {
+        width: 300px;
+    }
+}
+.action-item{
+    color:black;
+    background-color:yellow;
+    border:none;
+    cursor: pointer;
+}
+.action-button-wrapper{
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+}
+.add-button{
+    background-color: yellow;
+    color: black;
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+}
 .wrapper {
     margin-top: 60px;
     display: flex;
@@ -99,15 +195,33 @@ nav {
     justify-content: space-between;
 }
 .reviews-wrapper{
+    padding: 10px;
     color:yellow;
     border: 2px solid yellow;
 }
+.review-header-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+.review-action-buttons {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+}
 .review{
+    padding: 15px;
     border: 2px solid yellow;
 }
 .review-input{
-    background: black;
-    color:yellow;
     position: relative;
-    max-width: calc(100% - 30px);
+    max-width: 100%;
+    width: -webkit-fill-available;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
 }

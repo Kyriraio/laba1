@@ -2,6 +2,7 @@
 <html lang="ru">
 <head>
     <link rel="stylesheet" href="styles/project.css">
+    <script src="scripts/reviews.js"></script>
     <title>Медведь</title>
 </head>
 <header>
@@ -28,35 +29,62 @@
     </div>
     <div class ="reviews-wrapper">
         <div class="review-header-wrapper">
-            <label for="review-text">Отзывы</label>
-            <br>
-            <textarea class="review-input" type="text" id="review-text"></textarea>
+            <div>
+                <label for="review-text">Отзывы</label>
+                <br>
+                <!-- <textarea class="review-input" type="text" id="review-text"></textarea> -->
+            </div>
+            <button id="add-button" class="add-button">Добавить отзыв</button>
         </div>
 
         <div class="reviews">
-            <div class="review">
-                <h2 class="reviewer-name">Алексей</h2>
-                <p>
-                    Замечательная фотокарточка. Медведь, как живой!!!
-                </p>
-            </div>
-            <div class="review">
-                <h2 class="reviewer-name">Александр</h2>
-                <p>
-                    Ух ты какой медведь!
-                </p>
-            </div>
-            <div class="review">
-                <h2 class="reviewer-name">Алалалала</h2>
-                <p>
-                    Вау, вот это медведь, отличная фотография!
-                </p>
-            </div>
+           
         </div>
     </div>
 </div>
 <footer>
     <p>Авторские права © 2024 Портфолио фотографа</p>
 </footer>
+<div id="addModal" class="modal">
+    <div class="modal-content">
+        <h2 class="modal-header">Добавить элемент</h2>
+        <form id="formAdd">
+            <div class="form-group">
+                <label for="name">Имя*</label>
+                <input class="text-input" type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="review">Отзыв*</label>
+                <textarea required class="review-input" type="text" id="review"></textarea>
+            </div>
+            <button  id ="btn-submit-add" class="btn-submit">Добавить</button>
+        </form>
+    </div>
+</div>
+
+<div id="updateModal" class="modal">
+    <div class="modal-content">
+        <h2 class="modal-header">Изменить элемент</h2>
+        <form id="formUpdate">
+            <div class="form-group">
+                <label for="name-update">Имя*</label>
+                <input class="text-input" type="text" id="name-update" required>
+            </div>
+            <div class="form-group">
+                <label for="review-update">Отзыв*</label>
+                 <textarea required class="review-input" type="text" id="review-update"></textarea>
+            </div>
+            <button  id ="btn-submit-update"  class="btn-submit">Сохранить изменения</button>
+        </form>
+    </div>
+</div>
+<div id="deleteModal" class="modal">
+    <div class="modal-content">
+        <h2 class="modal-header">Удалить элемент</h2>
+        <form id="formDelete">
+            <button  id ="btn-submit-delete"  class="btn-submit">Удалить</button>
+        </form>
+    </div>
+</div>
 </body>
 </html>

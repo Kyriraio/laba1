@@ -221,9 +221,11 @@ function displayItems(filterSortedIds = []) {
             cell_date.innerHTML = project.date;
             cell_image.classList.add('image-cell');
             cell_image.innerHTML = `
+            <a href='project.html'>
     <div class="image-wrapper">
        <img class="image" src="${image_url}" alt="${project.name}">
-    </div>`
+    </div>
+    </a>`
             cell_update.innerHTML = `
             <div class="action-button-wrapper">
                 <button id="update-button" class="action-item update-button">O</button>
