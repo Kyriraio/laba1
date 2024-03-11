@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="scripts/index.js"></script>
     <title>Портфолио фотографа</title>
     <link rel="stylesheet" href="styles/style.css">
 </head>
@@ -46,9 +47,67 @@
             <!-- Добавьте больше превью работ по мере необходимости -->
         </div>
     </section>
+    <h1 class="news-header">Новости</h1>
+
+    <button id="add-button">Добавить</button>
+    <div class="news">
+        <!-- <div class="news-item">
+            <h2>Дата</h2>
+            <p>10.01.2024</p>
+            <div class="content">Test1</div>
+        </div>
+        <div class="news-item">
+            <div class="date">
+               <h2>Дата</h2>
+               <p>10.01.2024</p>
+            </div>
+            <div class="content">Test2</div>
+        </div> -->
+    </div>
 </main>
-<footer>
+<!-- <footer>
     <p>Авторские права © 2024 Портфолио фотографа</p>
-</footer>
+</footer> -->
+<div id="addModal" class="modal">
+    <div class="modal-content">
+        <h2 class="modal-header">Добавить элемент</h2>
+        <form id="formAdd">
+            <div class="form-group">
+                <label for="date">Дата*</label>
+                <input class="text-input" type="text" id="date" required>
+            </div>
+            <div class="form-group">
+                <label for="preview">Содержание*</label>
+                <input class="text-input" type="text" id="preview" required>
+            </div>
+            <button  id ="btn-submit-add" class="btn-submit">Добавить</button>
+        </form>
+    </div>
+</div>
+
+<div id="updateModal" class="modal">
+    <div class="modal-content">
+        <h2 class="modal-header">Изменить элемент</h2>
+        <form id="formUpdate">
+            <div class="form-group">
+                <label for="date">Дата</label>
+                <input class="text-input" type="text" id="dateChange" >
+            </div>
+            <div class="form-group">
+                <label for="preview">Содержание</label>
+                <input class="text-input" type="text" id="previewChange" >
+            </div>
+            <button  id ="btn-submit-update"  class="btn-submit">Сохранить изменения</button>
+        </form>
+    </div>
+</div>
+<div id="deleteModal" class="modal">
+    <div class="modal-content">
+        <h2 class="modal-header">Удалить элемент</h2>
+        <form id="formDelete">
+            <button  id ="btn-submit-delete"  class="btn-submit">Удалить</button>
+        </form>
+    </div>
+</div>
 </body>
 </html>

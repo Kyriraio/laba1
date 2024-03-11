@@ -221,7 +221,7 @@ function displayItems(filterSortedIds = []) {
             cell_date.innerHTML = project.date;
             cell_image.classList.add('image-cell');
             cell_image.innerHTML = `
-            <a href='project.html'>
+            <a href='project.html?id=${project.id}'>
     <div class="image-wrapper">
        <img class="image" src="${image_url}" alt="${project.name}">
     </div>

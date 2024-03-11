@@ -2,8 +2,10 @@ let form_add = null;
 let form_update = null;
 let form_delete = null;
 let selected_review_id = null;
-let button_delete = null;
-let button_update = null;
+let buttons_delete = null;
+let buttons_update = null;
+let id = null;
+let db = null;
 
 function openModalAdd() {
     modal_add.classList.add("blur");
@@ -19,13 +21,13 @@ function openModalUpdate() {
     if(!selected_review_id) {
         return
     }
-    let reviews = localStorage.getItem('reviews');
+    let reviews = localStorage.getItem('reviews_'+id);
     if(!reviews) {
         return
     } 
     reviews = JSON.parse(reviews);
-    const id = selected_review_id.split('-')[1];
-    const review = reviews.find(el=>el.id === Number(id));
+    const selected_id = selected_review_id.split('-')[1];
+    const review = reviews.find(el=>el.id === Number(selected_id));
     const name = document.getElementById("name-update");
     const comment = document.getElementById("review-update");
     name.value = review.name;
@@ -80,39 +82,22 @@ function onDocumentLoad() {
         e.preventDefault();
         updateReview();
     })
-    
-    displayReviews();
 }
 function addReview() {
-    let reviews = localStorage.getItem('reviews');
+    let reviews = localStorage.getItem('reviews_'+id);
     if(!reviews) {
       reviews = JSON.stringify([]);
     }
     reviews = JSON.parse(reviews);
-    const length = reviews?.length || 0;
     const name = document.getElementById("name").value;
     const comment = document.getElementById("review").value;
-//     const el = `
-//     <div id='review-${length + 1}' class="review">
-//     <h2 class="reviewer-name">${name}</h2>
-//     <p>
-//         ${comment}
-//     </p>
-//     <div class="action-button-wrapper">
-//         <button id="update-button" class="action-item update-button">Обновить отзыв</button>
-//     </div>
-//     <div class="action-button-wrapper">
-//         <button id="delete-button" class="action-item delete-button">Уалить отзыв</button>
-//     </div>
-// </div>
-//     `
     const review ={
         id: Math.floor(Math.random() * 1000),
         name,
         comment
     }
     reviews.push(review)
-    localStorage.setItem('reviews', JSON.stringify(reviews));
+    localStorage.setItem('reviews_'+id, JSON.stringify(reviews));
     closeModalAdd()
     displayReviews()
 }
@@ -120,13 +105,13 @@ function updateReview() {
     if(!selected_review_id) {
         return
     }
-    let reviews =localStorage.getItem('reviews');
+    let reviews =localStorage.getItem('reviews_'+id);
     if(!reviews) {
         return
     } 
     reviews = JSON.parse(reviews);
-    const id = selected_review_id.split('-')[1];
-    reviews = reviews.filter(review=>review.id !== Number(id));
+    const selected_id = selected_review_id.split('-')[1];
+    reviews = reviews.filter(review=>review.id !== Number(selected_id));
     const length = reviews?.length || 0;
     const name = document.getElementById("name-update").value;
     const comment = document.getElementById("review-update").value;
@@ -136,7 +121,7 @@ function updateReview() {
         comment
     }
     reviews.push(el)
-    localStorage.setItem('reviews', JSON.stringify(reviews));
+    localStorage.setItem('reviews_'+id, JSON.stringify(reviews));
     displayReviews();
     closeModalUpdate();
 }
@@ -144,20 +129,23 @@ function deleteReview() {
     if(!selected_review_id) {
         return
     }
-    let reviews =localStorage.getItem('reviews');
+    let reviews =localStorage.getItem('reviews_'+id);
     if(!reviews) {
         return
     }
     reviews = JSON.parse(reviews);
-    const id = selected_review_id.split('-')[1];
-    reviews = reviews.filter(review=>review.id !== Number(id));
-    localStorage.setItem('reviews', JSON.stringify(reviews));
+    const selected_id = selected_review_id.split('-')[1];
+    reviews = reviews.filter(review=>review.id !== Number(selected_id));
+    localStorage.setItem('reviews_'+id, JSON.stringify(reviews));
     displayReviews();
 
 }
 function addActionButtonsListeners() {
     buttons_update = document.querySelectorAll('.update-button');
     buttons_delete = document.querySelectorAll('.delete-button');
+    if(!buttons_delete || !buttons_update) {
+        return
+    }
     for(const button_update of buttons_update) {
         button_update.addEventListener('click', (e)=>{
             selected_review_id = e.target.closest('.review').id;
@@ -172,7 +160,7 @@ function addActionButtonsListeners() {
     }
 }
 function displayReviews() {
-    let reviews = localStorage.getItem('reviews');
+    let reviews = localStorage.getItem('reviews_'+id);
     const reviews_list = document.querySelector(".reviews");
     if(!reviews || !reviews?.length) {
         reviews_list.innerHTML = ""
@@ -211,15 +199,35 @@ document.addEventListener('click', (e) => {
     }
 
     const deleteModalContent = document.querySelector('#deleteModal .modal-content');
-    if (!deleteModalContent.contains(e.target)  && !Array.from(buttons_delete).includes(e.target)) {
+    if (!deleteModalContent.contains(e.target)  && !Array.from(buttons_delete ?? []).includes(e.target)) {
         closeModalDelete();
     }
 
     const updateModalContent = document.querySelector('#updateModal .modal-content');
-    if (!updateModalContent.contains(e.target)  && !Array.from(buttons_update).includes(e.target) ) {
+    if (!updateModalContent.contains(e.target)  && !Array.from(buttons_update ?? []).includes(e.target) ) {
         closeModalUpdate();
     }
 })
+function initPageContent() {
+    const dbPromise = window.indexedDB.open('projectsDB', 1);
+    dbPromise.onsuccess = function (event) {
+        db = event.target.result;
+        const tx = db.transaction('projects', 'readonly');
+        const store = tx.objectStore('projects');
+        const request = store.get(Number(id));
+        request.onsuccess = function(event) {
+            let project = event.target.result;
+            const image_blob = new Blob([project.image], { type: "image/jpeg" });
+            const image_url = URL.createObjectURL(image_blob);
+            document.querySelector('.description').textContent = project.description;
+            document.querySelector('.image').src = image_url;
+            displayReviews()
+        }
+    };
+}
 document.addEventListener('DOMContentLoaded', () => {
-  onDocumentLoad()
+  const url = new URL(window.location.href)
+  id = new URLSearchParams(url.search).get('id');
+  initPageContent();
+  onDocumentLoad();
 });
